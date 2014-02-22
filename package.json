@@ -1,0 +1,22 @@
+{
+  "name": "audio-cron",
+  "version": "0.1.0",
+  "description": "Records audio periodically on the enrg-pi",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ENRG/audio-cron.git"
+  },
+  "author": "John Fawcett",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ENRG/audio-cron/issues"
+  },
+  "dependencies": {
+    "moment": "~2.5.1",
+    "cron": "~1.0.3"
+  }
+}

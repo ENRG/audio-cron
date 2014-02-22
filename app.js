@@ -9,8 +9,8 @@ var config = {
 , immediate:  true
 , arecord:    [ '-d', 60, '-r', 64 ]
 , lame:       [ '-x', '-r', '-' ]
-, wavDir:     'wav'
-, mp3Dir:     'mp3'
+, wavDir:     '../ftp/wav'
+, mp3Dir:     '../ftp/mp3'
 };
 
 // Periodically record 1 second wav files
