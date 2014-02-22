@@ -2,7 +2,7 @@
   "name": "audio-cron",
   "version": "0.1.0",
   "description": "Records audio periodically on the enrg-pi",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
