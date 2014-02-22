@@ -6,6 +6,8 @@ var moment  = require('moment');
 var config  = require('./config');
 var acron   = require('./');
 
+var prev;
+
 // Periodically record 1 second wav files
 var job = new CronJob({
   cronTime: config.period
@@ -33,7 +35,9 @@ function onSuccess( filename ){
 function onTick(){
   console.log('tick');
 
-  acron.record( function( error ){
+  if ( prev ) prev.kill();
+
+  prev = acron.record( function( error ){
     if ( error ) return onError( error );
     console.log('Recording complete!');
   });
