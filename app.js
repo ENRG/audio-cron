@@ -39,7 +39,7 @@ function onSuccess( filename ){
 
 function onTick(){
 console.log('tick');
-  var d = moment().format('YYYYddmm-hhMM');
+  var d = moment().format('YYYYMMDD-hhmm');
 
   var arecord = proc.spawn(
     'arecord'
