@@ -15,9 +15,11 @@ var job = new CronJob({
 , start:    config.immediate
 });
 
+onTick();
+
 // As wav files come into the directory, convert them to
 // mp3 and then delete the old wav file
-fs.watch( config.wavDir, onWavDirChange );
+//fs.watch( config.wavDir, onWavDirChange );
 
 function onComplete(){
 console.log("complete!");
