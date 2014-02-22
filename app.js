@@ -31,19 +31,15 @@ function onSuccess( filename ){
 }
 
 function onTick(){
-console.log('tick');
-  var d = moment().format('YYYYMMDD-hhmm');
+  console.log('tick');
 
-  var arecord = proc.spawn(
-    'arecord'
-  , config.arecord.concat( path.join( config.wavDir, d + '.wav' ) )
-  );
-
-  arecord.stderr.on( 'error', onError );
+  acron.record( function( error ){
+    if ( error ) return onError( error );
+  });
 }
 
 function onWavDirChange( e, filename ){
-  console.log('onWavDirChange', filename);
+  return console.log('onWavDirChange', filename);
 
   var lame = proc.spawn(
     'lame'
