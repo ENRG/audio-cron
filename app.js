@@ -35,6 +35,7 @@ function onTick(){
 
   acron.record( function( error ){
     if ( error ) return onError( error );
+    console.log('Recording complete!');
   });
 }
 
