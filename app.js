@@ -50,6 +50,8 @@ console.log('tick');
 }
 
 function onWavDirChange( e, filename ){
+  console.log('onWavDirChange', filename);
+
   var lame = proc.spawn(
     'lame'
   , config.lame.concat( path.join( config.mp3Dir, filename ) )
