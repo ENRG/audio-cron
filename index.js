@@ -53,13 +53,15 @@ module.exports.record = function( options, callback ){
     path.join( config.wavDir, output )
   );
 
+  console.log( 'arecord', args.join(' ') );
+
   var arecord = proc.spawn( 'arecord', args );
 
-  arecord.on( 'error', function( code, error ){
-    callback( error );
-  });
+  // arecord.on( 'error', function( code, error ){
+  //   callback( error );
+  // });
 
-  arecord.on( 'close', function( code ){
-    callback();
-  });
+  // arecord.on( 'close', function( code ){
+  //   callback();
+  // });
 };
