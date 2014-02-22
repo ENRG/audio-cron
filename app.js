@@ -15,6 +15,7 @@ var config = {
 
 // Periodically record 1 second wav files
 var job = new CronJob( config.period, onTick, onComplete );
+job.start();
 
 // As wav files come into the directory, convert them to
 // mp3 and then delete the old wav file
