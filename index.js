@@ -27,6 +27,11 @@ var optionsToArgs = function( options ){
 };
 
 module.exports.record = function( options, callback ){
+  if ( typeof options === 'function' ){
+    callback = options
+    options = {};
+  }
+
   callback = callback || function(){};
 
   var defaults = {
@@ -47,8 +52,14 @@ module.exports.record = function( options, callback ){
   var args = optionsToArgs( options ).concat(
     path.join( config.wavDir, output )
   );
-console.log(args);
+
   var arecord = proc.spawn( 'arecord', args );
-  arecord.on( 'error', callback );
-  arecord.on( 'close', callback );
+
+  arecord.on( 'error', function( code, error ){
+    callback( error );
+  });
+
+  arecord.on( 'close', function( code ){
+    callback();
+  });
 };
