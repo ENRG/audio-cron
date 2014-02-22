@@ -34,7 +34,7 @@ module.exports.record = function( options, callback ){
   , bitRate:  64
   , device:   'plughw:1,0'
   , format:   'cd'
-  , output:   moment().format( config.filenameFormat )
+  , output:   moment().format( config.filenameFormat ) + '.wav'
   };
 
   for ( var key in defaults ){
@@ -45,9 +45,9 @@ module.exports.record = function( options, callback ){
   delete options.output;
 
   var args = optionsToArgs( options ).concat(
-    path.join( config.wavDir, d + '.wav' )
+    path.join( config.wavDir, output )
   );
-
+console.log(args);
   var arecord = proc.spawn( 'arecord', args );
   arecord.on( 'error', callback );
   arecord.on( 'close', callback );
