@@ -14,14 +14,18 @@ var config = {
 };
 
 // Periodically record 1 second wav files
-var job = new CronJob( config.period, onTick, onComplete );
-job.start();
+var job = new CronJob({
+  cronTime: config.period
+, onTick:   onTick
+, start:    config.immediate
+});
 
 // As wav files come into the directory, convert them to
 // mp3 and then delete the old wav file
 fs.watch( config.wavDir, onWavDirChange );
 
 function onComplete(){
+console.log("complete!");
   process.exit(0);
 }
 
@@ -34,6 +38,7 @@ function onSuccess( filename ){
 }
 
 function onTick(){
+console.log('tick');
   var d = moment().format('YYYYddmm-hhMM');
 
   var arecord = proc.spawn(
@@ -61,3 +66,6 @@ function onLameEncodingComplete( filename ){
     onSuccess( filename );
   });
 }
+
+module.exports.onTick = onTick;
+module.exports.onWavDirChange = onWavDirChange;
