@@ -39,6 +39,7 @@ function onTick(){
 }
 
 function onWavDirChange( e, filename ){
+  return;
   return console.log('onWavDirChange', filename);
 
   var lame = proc.spawn(
